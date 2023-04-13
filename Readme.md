@@ -26,7 +26,7 @@ The project aims to develop a high performance website for visualizing and filte
 2. variable passing to seperate pages: serialize filtered data as pickle and load again in next page
 3. Make two different filter space works together without duplicated computing: use cache decorater that re-defined in streamlit
 
-### Web preview:
+### Web preview
 <img width="958" alt="image" src = https://github.com/Xiyuan0315/PPIs-visualization/blob/master/example/filter.png>
 <img width="958" alt="image" src = https://github.com/Xiyuan0315/PPIs-visualization/blob/master/example/homo.png>
 <img width="958" alt="image" src = https://github.com/Xiyuan0315/PPIs-visualization/blob/master/example/pathway.png>
