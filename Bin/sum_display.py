@@ -18,26 +18,48 @@ def filter_yeast():
         else:
             df = keyword(df,keyword_list)
     
-    # df = pd.util.hash_pandas_object(df)
-    df = filter_dataframe(df)
-    st.write(df)
-    csv = convert_df(df.reset_index(drop = True))
-    col1, col2, col3 , col4, col5 = st.columns(5)
-    with col1:
-        pass
-    with col2:
-        pass
-    with col3 :
-        pass
-    with col4:
-        pass
-    with col5:
-        st.download_button(
-        label="Download",
-        data=csv,
-        file_name='summary.csv',
-        mime="text/csv"
-    )
+    mode = st.selectbox('Selet the mode',('Filtering','Editing'))
+    if mode == 'Filtering':
+        df = filter_dataframe(df)
+        st.write(df)
+        csv = convert_df(df.reset_index(drop = True))
+        col1, col2, col3 , col4, col5 = st.columns(5)
+        with col1:
+            pass
+        with col2:
+            pass
+        with col3 :
+            pass
+        with col4:
+            pass
+        with col5:
+            st.download_button(
+            label="Download",
+            data=csv,
+            file_name='summary.csv',
+            mime="text/csv"
+        )
+    else:
+        edited_df = st.experimental_data_editor(df,num_rows = 'dynamic')
+        col1, col2, col3 , col4, col5 = st.columns(5)
+
+        with col1:
+            finish_editing = st.button('Finish editing')
+        with col2:
+            pass
+        with col3 :
+            pass
+        with col4:
+            pass
+        with col5:
+            exit_editing = st.button('Quit without saving')
+        if finish_editing:
+            edited_df.to_pickle(input_dir / 'summary.pkl')
+        else:pass
+        if exit_editing:
+            pass
+        df = pd.read_pickle(input_dir / 'summary.pkl')
+
 
 
 

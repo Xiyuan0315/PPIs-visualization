@@ -18,10 +18,10 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         pd.DataFrame: Filtered dataframe
     """
-    modify = st.checkbox("Add filters")
+    # modify = st.checkbox("Add filters")
 
-    if not modify:
-        return df
+    # if not modify:
+    #     return df
 
     df = df.copy(deep=True)
 
@@ -82,6 +82,7 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
                     df = df[df[column].astype(str).str.contains(user_text_input)]
 
     return df
+
 @st.cache_data()
 def keyword(df,keywords:list, intersect = False):
     df_list = []
@@ -111,7 +112,6 @@ def format_str(text:str):
 @st.cache_data 
 def convert_df(df):
     return df.to_csv().encode('utf-8')
-
 
 def get_pair_reverse(df):
     """
@@ -155,7 +155,5 @@ def merge_df(df,df_cand):
     candidates_r = get_pair_reverse(df_cand)
     candidates = pd.concat([candidates,candidates_r], ignore_index=True)
     df['pair'] = df['gene1'].astype(str) + df['gene2']
-    # Filter the pairs of candidates from the DDR.xlsx
     candidates_info = df[df['pair'].isin(candidates)] 
-    # Drop the jointed genes and save as excel file
     return candidates_info.drop(columns = ['pair'])
