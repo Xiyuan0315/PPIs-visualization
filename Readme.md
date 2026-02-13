@@ -1,11 +1,15 @@
-Required packages: streamlit, pandas, numpy
+Install dependencies:
+
+```
+pip install -r requirements.txt
+```
 
 To run the code:
 
 ```
 git clone --branch master git@github.com:Xiyuan0315/PPIs-visualization.git
-cd PPIs-visualization/Bin
-streamlit run app.py
+cd PPIs-visualization
+streamlit run Bin/app.py
 ```
 
 ### Project overview
